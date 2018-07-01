@@ -1,0 +1,58 @@
+body {
+  background-color: #3F51B5;
+  color: white;
+}
+
+.App {
+  text-align: center;
+}
+
+.Nav .nav-wrapper {
+  background-color: #303F9F;
+}
+
+.Players .locked-dice {
+  background-color: #303F9F;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.Players .turn-icon {
+  padding-left: 20px;
+}
+
+.GameBoard .diceArea {
+  border: 5px solid #303F9F;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 10px;
+  min-height: 45vh;
+}
+
+
+.Die {
+  height: 50px;
+  width: 50px;
+  background-color: #C5CAE9;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition: .6s;
+}
+
+.Die:hover {
+  box-shadow: 10px 10px 15px black;
+  z-index: 2;
+  transition: .6s;
+}
+
+.rolled {
+  position: relative;
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
