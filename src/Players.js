@@ -22,8 +22,8 @@ class Players extends Component {
     let currentPlayer = this.props.players.filter((player) => player.id === this.props.turnId)[0]
     let diceLocked = [...currentPlayer.diceLocked, ...currentPlayer.currentDiceLocked].map((die, i) => {
       return (
-        <div key={i} className="col s6 m4 l2">
-          <Die value={die} />
+        <div key={die.id} className="col s6 m4 l2">
+          <Die value={die.value} />
         </div>
       )
     });
