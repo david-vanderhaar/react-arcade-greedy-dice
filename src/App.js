@@ -30,7 +30,7 @@ const DEFAULT_STATE = () => {
       currentScore: 0, //based on all dice selected
     },
     turnId: 1,
-    winScore: 100,
+    winScore: 5000,
   }
 }
 
