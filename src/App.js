@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import 'jquery';
+import 'materialize-css/dist/js/materialize.js';
+import 'materialize-css/dist/css/materialize.css';
 import './App.css';
 import Nav from './Nav';
 import Players from './Players';
 import GameBoard from './GameBoard';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, fas)
 
 const DEFAULT_STATE = () => {
   return { // our default state
@@ -76,18 +84,22 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <Players players={this.state.players} turnId={this.state.turnId}/>
-        <GameBoard
-          players={this.state.players}
-          gameBoard={this.state.gameBoard}
-          turnId={this.state.turnId}
-          winScore={this.state.winScore}
-          onRollDice={this.handleRollDice.bind(this)}
-          onLockDie={this.handleLockDie.bind(this)}
-          onEndTurn={this.handleEndTurn.bind(this)}
-          onEndGame={this.handleEndGame.bind(this)}
-          onKeepScore={this.handleKeepScore.bind(this)}
-        />
+        <div className="row no-margin">
+          <div className="col s12 m6 offset-m3">
+            <Players players={this.state.players} turnId={this.state.turnId}/>
+            <GameBoard
+              players={this.state.players}
+              gameBoard={this.state.gameBoard}
+              turnId={this.state.turnId}
+              winScore={this.state.winScore}
+              onRollDice={this.handleRollDice.bind(this)}
+              onLockDie={this.handleLockDie.bind(this)}
+              onEndTurn={this.handleEndTurn.bind(this)}
+              onEndGame={this.handleEndGame.bind(this)}
+              onKeepScore={this.handleKeepScore.bind(this)}
+            />
+          </div>
+        </div>
       </div>
     );
   }

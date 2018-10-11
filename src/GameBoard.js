@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Die from './Die';
 import uuid from 'uuid';
+import {
+  AwesomeButton
+} from 'react-awesome-button';
 
 class GameBoard extends Component {
 
@@ -52,7 +55,7 @@ class GameBoard extends Component {
     gameBoard.diceRolled = [];
     gameBoard.currentScore = 0;
     let turnId = this.props.turnId === 1 ? 2 : 1;
-    
+
     let player = this.props.players.filter((player) => player.id === this.props.turnId)[0]
     if (!this.checkForWin(player)) {
       this.props.onEndTurn(gameBoard, players, turnId);
@@ -61,10 +64,10 @@ class GameBoard extends Component {
   }
 
     checkForWin(player) {
-    if (player.score >= this.props.winScore) { 
-      alert('Player ' + player.id + ' Wins!'); 
+    if (player.score >= this.props.winScore) {
+      alert('Player ' + player.id + ' Wins!');
       this.props.onEndGame();
-      return true; 
+      return true;
     } else {
       return false
     }
@@ -140,12 +143,22 @@ class GameBoard extends Component {
             <h3>Current Score: {this.props.gameBoard.currentScore}</h3>
           </div>
           <div className="row">
-            <button className="btn" onClick={() => {this.rollDice()}}>
+            <AwesomeButton
+              type="primary"
+              size="medium"
+              className="gameboard-btn"
+              action={() => {this.rollDice()}}
+            >
               Roll
-            </button>
-            <button className="btn" onClick={() => {this.endTurn()}}>
-              Keep Score & End
-            </button>
+            </AwesomeButton>
+            <AwesomeButton
+              type="primary"
+              size="medium"
+              className="gameboard-btn"
+              action={() => {this.endTurn()}}
+            >
+              Keep Score
+            </AwesomeButton>
           </div>
         </div>
         <div className="diceArea">

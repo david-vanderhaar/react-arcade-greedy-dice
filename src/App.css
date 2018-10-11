@@ -16,6 +16,7 @@ body {
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
+  min-height: 70px;
 }
 
 .Players .turn-icon {
@@ -30,6 +31,18 @@ body {
   min-height: 45vh;
 }
 
+.GameBoard .gameboard-btn {
+  background-color: transparent;
+  margin: 8px;
+}
+
+.GameBoard .gameboard-btn {
+  --button-primary-color: #ff8f00;
+  --button-primary-color-dark: #ff6f00;
+  --button-primary-color-light: white;
+  --button-primary-color-hover: #ffc107;
+  --button-primary-color-active: #ffc107;
+}
 
 .Die {
   height: 50px;
@@ -57,3 +70,31 @@ body {
 }
 
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.SideNav {
+  width: 450px;
+}
+
+.SideNav li a {
+  color: #303F9F;
+}
+
+.SideNav .side-nav-text {
+  padding: 0px 54px;
+}
+
+.SideNav .side-nav-text p {
+  color: black;
+  text-align: left;
+  margin: 0px;
+}
+
+.SideNav .side-nav-text a {
+  color: #303F9F;
+  padding: 0px 4px;
+  display: inline-block;
+}
+
+.no-margin {
+  margin: 0px;
+}
