@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Die from './Die';
+import PhysicsBox from './PhysicsBox';
 import uuid from 'uuid';
 import {
   AwesomeButton
@@ -22,6 +23,7 @@ class GameBoard extends Component {
     gameBoard.diceRolled = diceRolled;
 
     this.props.onRollDice(gameBoard);
+    // this.refs.PhysicsBox.roll(diceRolled);
 
     if (this.calculateScoreCombo(gameBoard.diceRolled) <= 0) {
       this.endTurn(false);

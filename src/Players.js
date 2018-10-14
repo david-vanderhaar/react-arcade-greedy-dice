@@ -7,14 +7,10 @@ class Players extends Component {
     let playerScores = this.props.players.map((player) => {
       return (
         <div key={player.id} className="col s6">
-          <h3>
+          <h3 className={player.id === this.props.turnId ? 'has-turn' : ''}>
             Player {player.id}
-            {
-              (player.id === this.props.turnId) &&
-                <i className="turn-icon material-icons amber-text">access_time</i>
-            }
           </h3>
-          <div className="flow-text">{player.score}</div>
+          <div className={player.id === this.props.turnId ? 'flow-text has-turn' : 'flow-text '}>{player.score}</div>
         </div>
       )
     });

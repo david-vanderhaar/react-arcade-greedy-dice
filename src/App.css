@@ -3,8 +3,18 @@ body {
   color: white;
 }
 
+h3 {
+  margin: 12px 0px;
+  font-size: 32px;
+}
+
 .App {
   text-align: center;
+  color: #c5cae9;
+}
+
+nav .brand-logo {
+  color: #c5cae9;
 }
 
 .Nav .nav-wrapper {
@@ -19,8 +29,18 @@ body {
   min-height: 70px;
 }
 
+.locked-dice .Die {
+  left: 0px !important;
+}
+
 .Players .turn-icon {
   padding-left: 20px;
+}
+
+.Players .has-turn {
+  font-weight: bold;
+  color: #ffc107;
+  transition: .8s;
 }
 
 .GameBoard .diceArea {
@@ -28,12 +48,22 @@ body {
   border-radius: 20px;
   margin: 10px;
   padding: 10px;
-  min-height: 45vh;
+  min-height: 40vh;
 }
 
 .GameBoard .gameboard-btn {
   background-color: transparent;
   margin: 8px;
+}
+
+.dice-btn {
+  width: 55px;
+  height: 55px;
+  --button-primary-color: #ff8f00;
+  --button-primary-color-dark: #ff6f00;
+  --button-primary-color-light: white;
+  --button-primary-color-hover: #ffc107;
+  --button-primary-color-active: #ffc107;
 }
 
 .GameBoard .gameboard-btn {
@@ -42,6 +72,15 @@ body {
   --button-primary-color-light: white;
   --button-primary-color-hover: #ffc107;
   --button-primary-color-active: #ffc107;
+}
+
+.PhysicsBox #physics-container canvas {
+  width: 100%;
+  height: auto;
+  background-color: transparent !important;
+  border: 5px solid #303F9F;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .Die {
@@ -56,17 +95,18 @@ body {
   font-weight: bold;
   color: black;
   cursor: pointer;
-  transition: .6s;
+  transition: .2s all ease-out;
 }
 
 .Die:hover {
-  box-shadow: 10px 10px 15px black;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, .3);
   z-index: 2;
   transition: .6s;
 }
 
 .rolled {
   position: relative;
+  display: block;
 }
 
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
