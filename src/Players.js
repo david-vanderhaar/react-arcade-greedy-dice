@@ -19,7 +19,7 @@ class Players extends Component {
     let diceLocked = [...currentPlayer.diceLocked, ...currentPlayer.currentDiceLocked].map((die, i) => {
       return (
         <div key={die.id} className="col s6 m4 l2">
-          <Die value={die.value} />
+          <Die value={die.value}/>
         </div>
       )
     });

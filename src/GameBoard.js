@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Materialize from 'materialize-css';
 import Die from './Die';
 import PhysicsBox from './PhysicsBox';
 import uuid from 'uuid';
@@ -7,6 +8,12 @@ import {
 } from 'react-awesome-button';
 
 class GameBoard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      actionsAllowed: true
+    };
+  }
 
   rollDice() {
     let player = this.props.players.filter((player) => player.id === this.props.turnId)[0]
@@ -26,7 +33,13 @@ class GameBoard extends Component {
     // this.refs.PhysicsBox.roll(diceRolled);
 
     if (this.calculateScoreCombo(gameBoard.diceRolled) <= 0) {
-      this.endTurn(false);
+      Materialize.toast(`No Dice!`, 2000)
+      this.setState({
+        actionsAllowed: false,
+      });
+      setTimeout(() => {
+        this.endTurn(false);
+      }, 2000)
     }
   }
 
@@ -61,13 +74,16 @@ class GameBoard extends Component {
     let player = this.props.players.filter((player) => player.id === this.props.turnId)[0]
     if (!this.checkForWin(player)) {
       this.props.onEndTurn(gameBoard, players, turnId);
-      alert('next players turn')
+      Materialize.toast(`Player ${turnId}'s turn`, 2000)
     }
+    this.setState({
+      actionsAllowed: true
+    })
   }
 
     checkForWin(player) {
     if (player.score >= this.props.winScore) {
-      alert('Player ' + player.id + ' Wins!');
+      Materialize.toast(`Player ${player.id} Wins!`, 5000);
       this.props.onEndGame();
       return true;
     } else {
@@ -134,7 +150,7 @@ class GameBoard extends Component {
   render() {
     let diceRolled = this.props.gameBoard.diceRolled.map((die, i) => {
       return (
-        <Die key={die.id} value={die.value} rolled={true} onClick={() => {this.lockDie(die)}}/>
+        <Die key={die.id} value={die.value} rolled={true} onClick={() => {this.lockDie(die)}} actionsAllowed={this.state.actionsAllowed}/>
       );
     });
 
@@ -150,6 +166,7 @@ class GameBoard extends Component {
               size="medium"
               className="gameboard-btn"
               action={() => {this.rollDice()}}
+              disabled={!this.state.actionsAllowed}
             >
               Roll
             </AwesomeButton>
@@ -158,6 +175,7 @@ class GameBoard extends Component {
               size="medium"
               className="gameboard-btn"
               action={() => {this.endTurn()}}
+              disabled={!this.state.actionsAllowed}
             >
               Keep Score
             </AwesomeButton>

@@ -33,6 +33,10 @@ nav .brand-logo {
   left: 0px !important;
 }
 
+.locked-dice .Die span {
+  color: #dadada;
+}
+
 .Players .turn-icon {
   padding-left: 20px;
 }

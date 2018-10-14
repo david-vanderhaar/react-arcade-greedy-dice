@@ -11,13 +11,16 @@ class Die extends Component {
       animation: `spin ${spin_speed}s 1`,
       left: `${left}%`
     }
+
+    let classes = this.props.rolled ? 'Die dice-btn rolled' : 'Die dice-btn';
     return (
       <AwesomeButton
         type="primary"
         size="small"
-        className={this.props.rolled ? 'Die dice-btn rolled' : 'Die dice-btn'}
+        className={ classes }
         style={style}
         action={this.props.onClick}
+        disabled={!this.props.actionsAllowed}
       >
         {this.props.value}
       </AwesomeButton>
